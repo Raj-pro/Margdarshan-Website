@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>YouTube Thumbnails</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f2f2f2;
+        }
+        .card {
+            width: 100%;
+            max-width: 800px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+            transition: 0.3s;
+            text-align: center;
+            background-color: #ffffff;
+        }
+        p{
+            color: transparent;
+        }
+        .card-pair {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            align-items: center;
+        }
+        .thumbnail {
+            max-width: 100px;
+            height: auto;
+            margin-left: 80%;
+        }
+        .card:hover {
+            box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+        }
+    </style>
+    <script>
+        function displayThumbnails() {
+            var container = document.getElementById("thumbnailContainer");
+            var youtubeParagraphs = document.getElementsByClassName("youtube-link");
+            for (var i = 0; i < youtubeParagraphs.length; i++) {
+                var youtubeUrl = youtubeParagraphs[i].textContent.trim();
+                var videoId = youtubeUrl.match(/[?&]v=([^&#]+)/)[1];
+                var thumbnailUrl = "https://img.youtube.com/vi/" + videoId + "/0.jpg";
+                var cardPair = document.createElement("div");
+                cardPair.className = "card-pair";
+                var linkCard = document.createElement("div");
+                linkCard.className = "card";
+                linkCard.textContent = youtubeUrl;
+                var thumbnailImage = document.createElement("img");
+                thumbnailImage.className = "thumbnail";
+                thumbnailImage.src = thumbnailUrl;
+                thumbnailImage.alt = "YouTube Thumbnail";
+                linkCard.appendChild(thumbnailImage);
+                cardPair.appendChild(linkCard);
+                container.appendChild(cardPair);
+            }
+        }
+        document.addEventListener("DOMContentLoaded", displayThumbnails);
+    </script>
+</head>
+<body>
+    <div class="card">
+        <h1>YouTube Thumbnails Display</h1>
+        <div id="thumbnailContainer">
+    <p class="youtube-link">https://www.youtube.com/watch?v=tG7fk_DUz5g&list=RDtG7fk_DUz5g&index=1&ab_channel=miracleofsound</p>
+    <p class="youtube-link">https://www.youtube.com/watch?v=JVla5FgJQso&list=RDtG7fk_DUz5g&index=2&ab_channel=CityWolf</p>
+    <p class="youtube-link">https://www.youtube.com/watch?v=NAEH0UKFikg&list=RDtG7fk_DUz5g&index=3&ab_channel=FLMusic</p>
+        </div>
+    </div>
+</body>
+</html>

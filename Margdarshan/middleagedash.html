@@ -1,0 +1,883 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <style>
+        /* Global Styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f2f2f2;
+        }
+
+        /* Navbar Styles */
+/* ... (your existing styles) ... */
+
+/* Navbar Styles */
+.navbar {
+    background-color: transparent;
+    color: #000;
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    position: relative;
+    z-index: 2;
+    margin-right: 20px;
+}
+
+.navbar-heading {
+    margin-right: auto;
+    margin-left: 250px;
+}
+
+.navbar-right {
+    display: flex;
+    align-items: center;
+}
+
+/* 
+
+
+
+        /* Navbar dropdown styles */
+        .navbar .dropdown:hover .dropdown-content {
+    display: block;
+}
+
+        .navbar .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    min-width: 160px;
+    z-index: 3; 
+    font-family: "Times New Roman", Times, serif;
+    right: 0; 
+    top: 60px; 
+}
+
+.navbar .dropdown-content a {
+    display: block;
+    padding: 10px;
+    color: #333; /* Change the text color */
+    text-decoration: none;
+    font-size: 16px;
+    transition: color 0.3s, background-color 0.3s;
+}
+
+.navbar .dropdown-content a:hover {
+    color: #fff; /* Change the text color on hover */
+    background-color: #ff8800; /* Change the background color on hover */
+}
+
+        .navbar .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .navbar .notification {
+            margin-right: 20px; /* Add spacing between the notification and dropdown */
+            cursor: pointer;
+        }
+
+        /* Add text decoration for navbar items on hover */
+        .navbar a:hover {
+            text-decoration: underline;
+        }
+
+        /* Sidebar Styles */
+     /* Sidebar Styles */
+.sidebar {
+    height: 100%;
+    width: 250px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: linear-gradient(to bottom, #ff8800, #88441f); /* Blue to Purple gradient */
+    color: #fff;
+    padding-top: 15px;
+    z-index: 1;
+    box-shadow: 2px 0px 5px rgba(0, 0, 0, 0.2); /* Add shadow effect */
+}
+
+/* Sidebar Profile Styles */
+.sidebar-profile {
+    margin-top: 20px;
+    text-align: center;
+}
+.sidebar-profile img {
+    height: 50%;
+    width: 50%;
+    border-radius: 50%;
+}
+
+.profile-button {
+    margin-top: 10px;
+}
+
+/* Sidebar Header Styles */
+.sidebar-header {
+    text-align: center;
+    font-size: 24px;
+    padding: 15px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2); /* White line below the header */
+}
+
+/* Sidebar Section Styles */
+.sidebar-section {
+    padding: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.2); /* White line above each section */
+}
+
+.sidebar-section h2 {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.sidebar-section ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.sidebar-section li {
+    margin-bottom: 10px;
+}
+
+.sidebar-section a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+/* Fancy Button Styles */
+.dashboard-button {
+    background: orange;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 25px;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+.dashboard-button:hover {
+    background: linear-gradient(to bottom, #f6b141, #c2cd29); /* Darker Blue to Dark Purple gradient on hover */
+}
+
+
+/* ... Previous CSS rules ... */
+
+/* Content Styles */
+.content {
+    margin-left: 250px; /* Adjust margin to accommodate the left navbar */
+    margin-right: 250px; /* Adjust margin to accommodate the right navbar */
+    padding: 30px;
+}
+.content img{
+    max-width: 200px; 
+    height: auto;
+    margin: -241px -127px -48px 194px;
+    z-index: 1; 
+}
+
+/* 3x3 Grid Styles */
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 columns */
+    gap: 20px; /* Gap between grid items */
+}
+.grid-container1 {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 3 columns */
+    gap: 20px; /* Gap between grid items */
+}
+
+/* Price and Percentage Increase Styles */
+.price {
+    font-weight: bold;
+    font-size: 24px;
+}
+
+.increase {
+    color: green;
+    font-weight: bold;
+    display: inline-block; /* Display inline with price */
+    margin-top: 8px;
+}
+
+.arrow {
+    font-size: 18px;
+    vertical-align: middle;
+    text-decoration: none; /* Remove underlines from the arrow */
+}
+
+/* ... Previous CSS rules ... */
+
+/* New Graph Section Styles */
+.graph-section {
+    margin-left: 250px; /* Adjust margin to accommodate the left navbar */
+    margin-right: 250px; /* Adjust margin to accommodate the right navbar */
+    padding: 30px;
+    background-color: #f2f2f2;
+}
+
+.graph-section h1 {
+    margin-bottom: 20px;
+}
+
+.graph-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 2 columns */
+    gap: 20px; /* Gap between grid items */
+}
+
+.graph-item {
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    text-align: left; /* Align text to the left */
+}
+
+.graph-item h2 {
+    margin-bottom: 10px;
+}
+.chart {
+  width: 100%; 
+  min-height: 250px;
+}
+
+/* ... Previous CSS rules ... */
+
+/* Graph Styles */
+.graph {
+    width: 100%;
+    height: 250px; /* Adjust the height of the graph bars */
+    background-color: #f2f2f2;
+    border: 1px solid #ccc;
+    position: relative;
+    margin-top: 10px;
+    overflow: hidden;
+}
+
+.bar {
+    background-color: #ff8800; /* Bar color */
+    width: calc(10.33% - 10px); /* Adjust the width of the bars and add separation */
+    position: absolute;
+    bottom: 0;
+    transition: height 0.5s;
+}
+
+.bar:nth-child(1) {
+    left: calc(0% + 10px);
+}
+
+.bar:nth-child(2) {
+    left: calc(10.66% + 10px);
+}
+
+.bar:nth-child(3) {
+    left: calc(20.66% + 10px);
+}
+.bar:nth-child(4) {
+    left: calc(30.66% + 10px);
+}
+.bar:nth-child(5) {
+    left: calc(40.66% + 10px);
+}
+.bar:nth-child(6) {
+    left: calc(50.66% + 10px);
+}
+.bar:nth-child(7) {
+    left: calc(60.66% + 10px);
+}
+.bar:nth-child(8) {
+    left: calc(70.66% + 10px);
+}
+.bar:nth-child(9) {
+    left: calc(80.66% + 10px);
+}
+.bar:nth-child(10) {
+    left: calc(90.66% + 10px);
+}
+/* Adjust the colors and other styles as needed */
+
+
+/* Price and Percentage Increase Styles */
+.price {
+    font-weight: bold;
+    font-size: 24px;
+}
+
+.increase {
+    font-weight: bold;
+    display: inline-block; /* Display inline with price */
+    margin-top: 8px;
+}
+
+.arrow {
+    font-size: 18px;
+    vertical-align: middle;
+    text-decoration: none; /* Remove underlines from the arrow */
+}
+
+
+/* Move "Item" header to the top */
+.card h2 {
+    margin-bottom: 10px;
+}
+
+/* Move price and increase to the bottom */
+.card .bottom-text {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+
+
+
+/* Card Styles */
+.card {
+    width: auto;
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add box shadow */
+    border-radius: 20px;
+    margin-bottom: 20px;
+    margin-right: 50px;
+    transition: transform 0.2s;
+}
+.card1 {
+    width: auto;
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add box shadow */
+    border-radius: 15px;
+    margin-bottom: 20px;
+    margin-left: 250px;
+    margin-right: 250px;
+    transition: transform 0.2s;
+}
+.card:hover {
+    transform: scale(1.05); /* Increase size on hover */
+}
+
+
+.card h1 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.card h3 {
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+/* Search Input Styles */
+.search-input {
+    position: relative;
+}
+
+input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: border-color 0.3s;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add box shadow */
+}
+
+input[type="text"]:hover {
+    border-color: #FFA500;
+}
+
+/* Navbar and Sidebar Styles - Unchanged */
+
+/* Main Content Styles */
+.main-content {
+    margin-left: 250px;
+    margin-right: 250px; /* Adjust margin to accommodate the right navbar */
+    padding: 30px;
+}
+
+/* Right Navbar Styles */
+.right-navbar {
+    position: fixed;
+    border-bottom-left-radius: 15px;
+    border-top-left-radius: 15px;
+    top: 250px;
+    right: 0;
+    width: 250px;
+    background-color: #fff;
+    box-shadow: -2px 0px 5px rgba(0, 0, 0, 0.2);
+    z-index: 2; /* Ensure the right navbar is above the main content */
+}
+
+.right-navbar-card {
+    padding: 20px;
+}
+
+.right-navbar h2 {
+    font-size: 20px;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.right-navbar ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.right-navbar li {
+    margin-bottom: 10px;
+}
+
+.right-navbar a {
+    text-decoration: none;
+    font-size: 16px;
+    color: #555;
+}
+
+/* ... Previous CSS rules ... */
+
+/* Search Bar Section Styles */
+.search-section {
+    margin-top: 30px;
+    margin-left: 270px;
+    margin-right: 250px;
+}
+
+.search-header {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+/* .card {
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 20px;
+} */
+
+.search-input {
+    display: flex;
+    align-items: center;
+}
+.search-input img{
+    max-width: 200px; 
+    height: auto;
+    margin: -140px 0 10px;
+    z-index: 1; 
+}
+
+#search-bar {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: border-color 0.3s;
+}
+
+#search-bar:hover {
+    border-color: #FFA500;
+}
+
+.search-button {
+    background-color: #ff8800;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+.search-button:hover {
+    background-color: #734c1e;
+}
+
+
+/* Card Styles for Documents Section */
+.documents-section .card {
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+.content-wrapper {
+    margin-left: 250px;
+    margin-right: 250px;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+/* Documents Section Styles */
+/* ... Previous CSS rules ... */
+
+/* File List Section Styles */
+.file-list-section {
+    text-align: left;
+    margin-top: 30px;
+    padding: 20px;
+}
+
+.file-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.file {
+    background-color: #fff;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+.file-details {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.file-name,
+.file-type,
+.file-category,
+.file-author,
+.file-size {
+    width: calc(20% - 10px); /* 5 columns with gap of 10px */
+    margin: 5px 0;
+    font-weight: bold;
+}
+
+/* Adjust styles for different screen sizes if needed */
+@media (max-width: 768px) {
+    .file-name,
+    .file-type,
+    .file-category,
+    .file-author,
+    .file-size {
+        width: 100%; /* Full width on smaller screens */
+    }
+}
+
+
+/* Footer Styles - Unchanged */
+
+
+/* Footer Styles */
+.footer {
+    background-color: #fff; /* Set the background color to white */
+    color: #333; /* Text color */
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 -5px 10px rgba(0, 0, 0, 0.2); /* Add box shadow only to the top */
+}
+
+.footer h1 {
+    font-size: 24px;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.footer p {
+    font-size: 16px;
+    margin-bottom: 10px;
+    color: #555;
+}
+
+
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <h1 class="navbar-heading">What are you Currently Persuing?</h1>
+        <div class="navbar-right">
+            <span class="notification">Notification</span>
+            <div class="dropdown">
+                <span class="profile-name">Pabitra Maharana</span>
+                <div class="dropdown-content">
+                    <a href="#">Profile</a>
+                    <a href="#">Settings</a>
+                    <a href="#">Logout</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <div class="sidebar-profile">
+            <img src="image/brendan-church-pKeF6Tt3c08-unsplash.jpg" alt="">
+            <h2>Profile</h2>
+            <div class="profile-button">
+                <button class="dashboard-button">Dashboard</button>
+            </div>
+        </div>
+        <div class="sidebar-header">Navigation</div>
+        <div class="sidebar-section">
+            <h2>Section 1</h2>
+            <ul>
+                <li><a href="#">Subsection 1.1</a></li>
+                <li><a href="#">Subsection 1.2</a></li>
+            </ul>
+        </div>
+        <div class="sidebar-section">
+            <h2>Section 2</h2>
+            <ul>
+                <li><a href="#">Subsection 2.1</a></li>
+                <li><a href="#">Subsection 2.2</a></li>
+            </ul>
+        </div>
+        <div class="sidebar-section">
+            <h2>Section 3</h2>
+            <ul>
+                <li><a href="#">Subsection 3.1</a></li>
+                <li><a href="#">Subsection 3.2</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="right-navbar">
+        <div class="right-navbar-card">
+            <h2>Right Navbar</h2>
+            <div class="sidebar-section">
+                <h2>Section 3</h2>
+                <ul>
+                    <li><a href="#">Subsection 3.1</a></li>
+                    <li><a href="#">Subsection 3.2</a></li>
+                </ul>
+            </div>
+            <div class="sidebar-section">
+                <h2>Section 3</h2>
+                <ul>
+                    <li><a href="#">Subsection 3.1</a></li>
+                    <li><a href="#">Subsection 3.2</a></li>
+                </ul>
+            </div>
+            <div class="sidebar-section">
+                <h2>Section 3</h2>
+                <ul>
+                    <li><a href="#">Subsection 3.1</a></li>
+                    <li><a href="#">Subsection 3.2</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Search Bar Section -->
+<section class="search-section">
+    <div class="card">
+        <h2 class="search-header">Search</h2>
+        
+        <div class="search-input">
+           
+            <input type="text" id="search-bar" name="Search" required placeholder="Search">
+            <button class="search-button">Search</button> 
+            <img src="image/istockphoto-1279651871-612x612-removebg-preview.png" alt="Customer Image">
+        </div>
+    </div>
+</section>
+
+<!-- New Graph Section -->
+<section class="graph-section">
+    <h1>Career Graph</h1>
+    <div class="grid-container1">
+        <!-- Grid Items -->
+        <div class="grid-item">
+            <div class="card">
+                <h2>Career A</h2>
+                <p class="bottom-text">
+                    <span class="price">Field</span>
+                    <span class="increase">- <span class="arrow">▲</span></span>
+                </p>
+                <div class="graph">
+                    <div class="bar" style="height: 30%;"></div>
+                    <div class="bar" style="height: 40%;"></div>
+                    <div class="bar" style="height: 60%;"></div>
+                    <div class="bar" style="height: 50%;"></div>
+                    <div class="bar" style="height: 65%;"></div>
+                    <div class="bar" style="height: 20%;"></div>
+                    <div class="bar" style="height: 70%;"></div>
+                    <div class="bar" style="height: 50%;"></div>
+                    <div class="bar" style="height: 10%;"></div>
+                    <div class="bar" style="height: 29%;"></div>
+                </div>
+            </div>
+        </div>
+        <div class="grid-item">
+            <div class="card">
+                <h2>Career B</h2>
+                <p class="bottom-text">
+                    <span class="price">Field</span>
+                    <span class="increase">- <span class="arrow">▼</span></span>
+                </p>
+                <div class="col-md-6">
+                    <div id="chart_div2" class="chart"></div>
+                  </div>
+            </div>
+        </div>
+        <!-- Repeat for other grid items -->
+    </div>
+</section>
+
+    <!-- Content Section -->
+    <section class="content">
+        <h1>Career Suggestions</h1>
+        <div class="grid-container">
+            <!-- Grid Items -->
+            <div class="grid-item">
+                <div class="card">
+                    <img src="image/77755e565ef7ddbff2546231cd8732bf-removebg-preview.png" alt="Child">
+                    <h2>Career 1</h2>
+                    
+                    <p class="bottom-text">
+                        <span class="price"></span>
+                        <span class="increase"><span class="arrow">▲</span></span>
+                    </p>
+                </div>
+            </div>
+            <div class="grid-item">
+                <div class="card">
+                    <img src="image/77755e565ef7ddbff2546231cd8732bf-removebg-preview.png" alt="">
+                    <h2>Career 1</h2>
+                    <p class="bottom-text">
+                        <span class="price"></span>
+                        <span class="increase"> <span class="arrow">▲</span></span>
+                    </p>
+                </div>
+            </div>
+            <div class="grid-item">
+                <div class="card">
+                    <img src="image/77755e565ef7ddbff2546231cd8732bf-removebg-preview.png" alt="">
+                    <h2>Career 1</h2>
+                    <p class="bottom-text">
+                        <span class="price"></span>
+                        <span class="increase"><span class="arrow">▲</span></span>
+                    </p>
+                </div>
+            </div>
+            <!-- Repeat for other grid items -->
+        </div>
+    </section>
+
+
+
+<!-- New Section -->
+<section class="file-list-section">
+    <div class="card1">
+    <h1>File List</h1>
+    <ul class="file-list">
+        <li class="file">
+            <div class="file-details">
+                <p class="file-name">File Name</p>
+                <p class="file-type">File Type</p>
+                <p class="file-category">File Purpose</p>
+                <p class="file-author">File Author</p>
+                <p class="file-size">File Size</p>
+            </div>
+        </li>
+        <!-- File 1 -->
+        <li class="file">
+            <div class="file-details">
+                <p class="file-name">File 1</p>
+                <p class="file-type">PDF</p>
+                <p class="file-category">Report</p>
+                <p class="file-author">Author Name</p>
+                <p class="file-size">1.2 MB</p>
+            </div>
+        </li>
+        
+        <!-- File 2 -->
+        <li class="file">
+            <div class="file-details">
+                <p class="file-name">File 2</p>
+                <p class="file-type">DOCX</p>
+                <p class="file-category">Proposal</p>
+                <p class="file-author">Author Name</p>
+                <p class="file-size">0.8 MB</p>
+            </div>
+        </li>
+        
+        <!-- File 3 -->
+        <li class="file">
+            <div class="file-details">
+                <p class="file-name">File 3</p>
+                <p class="file-type">XLSX</p>
+                <p class="file-category">Spreadsheet</p>
+                <p class="file-author">Author Name</p>
+                <p class="file-size">2.4 MB</p>
+            </div>
+        </li>
+        
+        <!-- File 4 -->
+        <li class="file">
+            <div class="file-details">
+                <p class="file-name">File 4</p>
+                <p class="file-type">PPTX</p>
+                <p class="file-category">Presentation</p>
+                <p class="file-author">Author Name</p>
+                <p class="file-size">1.5 MB</p>
+            </div>
+        </li>
+    </ul></div>
+</section>
+
+
+<!-- Footer Section -->
+<footer class="footer">
+    <div class="footer-card">
+        <h1>Contact Us</h1>
+        <p>If you have any questions or need assistance, feel free to get in touch with us.</p>
+        <p>Email: contact@example.com</p>
+        <p>Phone: +1 (123) 456-7890</p>
+    </div>
+</footer>
+
+
+<script src='//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+<script src='https://www.google.com/jsapi'></script>
+<script>
+google.load("visualization", "1", {packages:["corechart"]});
+google.setOnLoadCallback(drawChart2);
+function drawChart2() {
+  var data = google.visualization.arrayToDataTable([
+    ['Year', 'People', 'Expenses'],
+    ['2013',  1000,      400],
+    ['2014',  1170,      460],
+    ['2015',  660,       1120],
+    ['2016',  1030,      540]
+  ]);
+
+  var options = {
+    title: 'Career Demand',
+    hAxis: {title: 'Year',  titleTextStyle: {color: '#333'}},
+    vAxis: {minValue: 0}
+  };
+
+  var chart = new google.visualization.AreaChart(document.getElementById('chart_div2'));
+  chart.draw(data, options);
+}
+
+$(window).resize(function(){
+  drawChart1();
+  drawChart2();
+});
+
+</script>
+</body>
+</html>
